@@ -29,12 +29,14 @@ int COMPARE(int arg1, int arg2, ...) {
 	int i,j,t;
 
 	if (arg1==0) {
-		if (arg2<10 || arg2>COMPARELIMIT) {
+		if (arg2<10 || arg2>COMPARELIMIT) 
+		{
 			printf("******* ERROR: COMPARE(0,size) -- 'size' out of range ********** size=%d\n",size);
 			return(-1);
 		}
 		for (i=1; i<=arg2; i++) number[i] = i;
-		for (i=arg2; i>=1; i--){
+		for (i=arg2; i>=1; i--)
+		{
 			j = i*dshrandom(0) + 1;
 			if (j!=i) {
 				t = number[i];
@@ -46,17 +48,21 @@ int COMPARE(int arg1, int arg2, ...) {
 		size = arg2;
 		return(0);
 	}
-	if (arg1==-1) {
-		if (arg2<1 || arg2>size || arg2>KLIMIT) {
+	
+	if (arg1==-1) 
+	{
+		if (arg2<1 || arg2>size || arg2>KLIMIT) 
+		{
 			printf("******* ERROR: COMPARE(-1,k,Best[]) -- 'k' out of range ********** k=%d\n",arg2);
 			return(-1);
 		}
 		va_start(ap, arg2);
 		Best = va_arg(ap, int*);
 		va_end(ap);
-		for (i=0; i<arg2; i++) {
-			if ( Best[i]<1 || Best[i]>size
-			   || number[ Best[i] ] != size-i ) {
+		for (i=0; i<arg2; i++) 
+		{
+			if ( Best[i]<1 || Best[i]>size || number[ Best[i] ] != size-i )
+			{
 				printf("******* ERROR: COMPARE(-1,k,Best[]) -- Best[%d] = %d",i,Best[i]);
 				if ( Best[i]<1 || Best[i]>size )
 					printf(" out of range **********\n");
@@ -66,12 +72,25 @@ int COMPARE(int arg1, int arg2, ...) {
 		}
 		return(comp);
 	}
+	if(arg1 == -69)
+	{
+		printf("value of [%d] = %d\n", arg2, number[arg2]);
+	}
+	if(arg1 == -68)
+	{
+		int i;
+		for(i = 1; i <= 100; i++)
+			printf("%d, ", number[i]);
+		printf("\n");
+	}
 	if (arg1<1 || arg2<1 || arg1>size || arg2>size || arg1==arg2) return(-1);
 	comp++;
 	if (number[arg1]>number[arg2])
 		return(1);
 	else	return(2);
 }
+
+
 double dshrandom( long input ) {
 /*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
 /*	Random Number Generator					*/

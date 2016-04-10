@@ -11,18 +11,23 @@ int doalg(int n, int k, int* best)
 	// n -> number of elements in array
 	// k -> size 
 
-
 	// Initialize best array to -1
 	int i; 
-	for ( i = 0; i < n; i++) { best[i] = -1; }
+	//printf("before that!\n");
+	for ( i = 0; i < k; i++) 
+	{ 
+		//printf("%d\n", i);
+		best[i] = -1; 
+	}
 
 	// Iterate over each index in array and test to see if it belongs in best
+	//printf("before\n");
 	for ( i = 1; i <= k; i++ ) 
 	{
 		add_ordered(i, k, best);
 		//printf("%d\n", i);
 	}
-
+	//printf("After add ordered1\n");
 	// // // print out shit
 	// for ( i = 1; i < k; i++)
 	// {
@@ -38,6 +43,7 @@ int doalg(int n, int k, int* best)
 		add_ordered(i, k, best);
 		//printf("%d\n", i);
 	}
+	//printf("after add ordered2\n");
 
 	// // print out shit
 	// for ( i = 0; i < k; i++)

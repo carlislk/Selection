@@ -3,15 +3,18 @@
 #define MAXK 100
 #include "COMPARE.c"
 #include "doalg.c"
-main(){
-	int N[2] = {100,10000};
+int main(){
+	//int N[2] = {100,10000};
+
+	
+	int N[2] = {100, 10000};
 	int K[2] = {10,40};
 	int Best[MAXK];
 	int k,n,flag,round,ct,loop,biggest,total;
 
 	for (round=0; round<2; round++) 
 	{
-		printf("End: %d\n", round);
+		printf("Starting round: %d\n", round);
 		total = 0;
 		biggest = -1;
 		for (loop=0; loop<1000; loop++) 
@@ -19,9 +22,9 @@ main(){
 			n = N[round];
 			k = K[round];
 			COMPARE(0,n);
-			printf("after COMPARE(0,n)\n");
+			//printf("after COMPARE(0,n)\n");
 			flag = doalg( n, k, Best);
-			printf("after doalg(0,n)\n");
+			//printf("after doalg(0,n)\n");
 
 			if (flag==0) 
 			{
@@ -41,9 +44,10 @@ main(){
 		}
 		printf("n=%5d,  k=%d:  maximum= %d,  avg=%8.2f\n",
 			N[round],K[round],biggest,(1.0*total)/1000);
-		printf("End\n");
 		fflush(stdout);
-		printf("End\n");
+		printf("End of round: %d\n", round);
 	}
+
+	return 1;
 
 }
